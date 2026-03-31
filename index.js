@@ -1,9 +1,11 @@
 import express from "express";
+import multer from "multer";
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+const upload = multer();
 
-app.post("/email", (req, res) => {
+app.post("/email", upload.any(), (req, res) => {
   //const { from, subject, text, html } = req.body;
   console.log(req);
   //console.log("From:", from);
