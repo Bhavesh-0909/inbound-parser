@@ -6,11 +6,10 @@ app.use(express.urlencoded({ extended: true }));
 const upload = multer();
 
 app.post("/email", upload.any(), (req, res) => {
-  //const { from, subject, text, html } = req.body;
-  console.log(req);
-  //console.log("From:", from);
-  //console.log("Subject:", subject);
-  //console.log("Body:", text);
+  const { from, subject, text, html } = req.body;
+  console.log("From:", from);
+  console.log("Subject:", subject);
+  console.log("Body:", text);
 
   // 👉 Add your tagging logic here
 
