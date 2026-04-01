@@ -17,7 +17,7 @@ app.post("/email", upload.any(), async (req, res) => {
     const payload = {
       text : email
     }
-    const result = await fetch("https://ml-model-us52.onrender.com/detech", {
+    const result = await fetch("https://ml-model-us52.onrender.com/detect", {
       method : "POST",
       body : JSON.stringify(payload)
     });
