@@ -8,12 +8,12 @@ const upload = multer();
 app.post("/email", upload.any(), async (req, res) => {
   try {
     const { from, to, subject, html, email } = req.body;
-    console.log("from", from),
-    console.log("to", to);
-    console.log("subject", subject);
-    console.log("html", html);
-    console.log("email", email);
-
+    // console.log("from", from),
+    // console.log("to", to);
+    // console.log("subject", subject);
+    // console.log("html", html);
+    // console.log("email", email);
+    console.log("email type", typeof email);
     const payload = {
       text : email
     }
