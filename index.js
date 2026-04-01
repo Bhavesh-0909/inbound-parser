@@ -6,10 +6,15 @@ app.use(express.urlencoded({ extended: true }));
 const upload = multer();
 
 app.post("/email", async (req, res) => {
-  // const { from, subject, text, html } = req.body;
+  const { from, to, subject, html, email } = req.body;
+  console.log("from", from),
+  console.log("to", to);
+  console.log("subject", subject);
+  console.log("html", html);
+  console.log("email", email);
 
   const payload = {
-    text : req.body.email
+    text : email
   }
   const result = await fetch("https://ml-model-us52.onrender.com/detech", {
     method : "POST",
