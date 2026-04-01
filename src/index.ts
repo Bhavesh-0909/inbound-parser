@@ -46,6 +46,7 @@ app.get("/emails", async (req: Request, res: Response) => {
 app.post("/email", upload.any(), async (req: Request<{}, {}, EmailBody>, res: Response) => {
   try {
     const { from, to, subject, email } = req.body;
+    console.log("...............Process starts...............");
     if (!from || !to || !email) {
       return res.status(400).json({ error: "Missing required fields" });
     }
@@ -77,6 +78,7 @@ app.post("/email", upload.any(), async (req: Request<{}, {}, EmailBody>, res: Re
     };
 
     await db.insert(emailTable).values(safeData);
+    console.log("...............Process ends...............");
 
     res.status(200).json("OK");
   } catch (error) {
