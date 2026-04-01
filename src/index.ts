@@ -7,6 +7,14 @@ const app = express();
 import { db } from "./config.js";
 import { emailTable } from "./db/schema.js";
 
+import cors from "cors";
+
+app.use(
+  cors({
+    origin: "*"
+  })
+);
+
 app.use(express.urlencoded({ extended: true }));
 const upload = multer();
 
