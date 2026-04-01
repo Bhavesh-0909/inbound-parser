@@ -7,23 +7,30 @@ const upload = multer();
 
 app.post("/email", upload.any(), async (req, res) => {
   try {
-    const { from, to, subject, html, email } = req.body;
+    const { from, to, subject, html, email, text } = req.body;
     // console.log("from", from),
     // console.log("to", to);
     // console.log("subject", subject);
     // console.log("html", html);
     // console.log("email", email);
     console.log("email type", typeof email);
+    console.log("text", text);
+
     const payload = {
-      text : email
+      text : email || text || ""
     }
+
     const result = await fetch("https://ml-model-us52.onrender.com/detect", {
-      method : "POST",
-      body : JSON.stringify(payload)
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
     });
 
     // 👉 Add your tagging logic here
-    console.log(result);
+    const data = await result.json(); // 👈 VERY IMPORTANT
+    console.log("ML Response:", data);
     res.status(200).json("OK");
     
   } catch (error) {
