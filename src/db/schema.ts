@@ -6,5 +6,6 @@ export const emailTable = pgTable("email", {
   to: text().notNull(),
   raw: varchar({ length: 10000 }).notNull(),
   subject: varchar({ length: 255 }).notNull(),
-  label: varchar().notNull()
+  label: varchar().notNull(),
+  score: integer().notNull()
 });
