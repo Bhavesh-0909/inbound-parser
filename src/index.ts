@@ -35,10 +35,11 @@ function extractAttachmentsFromRaw(raw: string) {
   const regex =
     /Content-Disposition: attachment; filename="(.+?)"[\s\S]*?Content-Transfer-Encoding: base64\s+([\s\S]*?)--/g;
 
-  let match;
+  let match: RegExpExecArray | null;
+
   while ((match = regex.exec(raw)) !== null) {
     const filename = match[1];
-    const base64 = match[2].replace(/\s/g, "");
+    const base64 = (match[2] ?? "").replace(/\s/g, "");
 
     attachments.push({
       filename,
