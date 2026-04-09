@@ -47,6 +47,7 @@ app.post("/email", upload.any(), async (req: Request<{}, {}, EmailBody>, res: Re
   try {
     const { from, to, subject, email } = req.body;
     console.log("...............Process starts...............");
+    console.log("req : ", req);
     if (!from || !to || !email) {
       return res.status(400).json({ error: "Missing required fields" });
     }
