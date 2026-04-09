@@ -88,7 +88,6 @@ app.post(
   async (req: Request, res: Response) => {
     try {
       console.log("...............Process starts...............");
-      console.log("req : ", req);
       const { from, to, subject, email } = req.body;
 
       if (!from || !to || !email) {
