@@ -111,8 +111,8 @@ function calculateSpamScore({
   // -----------------------------
   let finalLabel = "ham";
 
-  if (score >= 60) finalLabel = "spam";
-  else if (score >= 30) finalLabel = "spam";
+  if (score >= 40) finalLabel = "spam";
+  else if (score >= 30) finalLabel = "suspicious";
 
   return {
     score,
